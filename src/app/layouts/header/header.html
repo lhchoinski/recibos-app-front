@@ -1,0 +1,86 @@
+﻿<div class="z-40 shadow-rm" [ngClass]="{ 'dark text-white-dark': store.semidark && store.menu === 'horizontal'}">
+    <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
+        <div class="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
+            <a routerLink="/" class="main-logo flex shrink-0 items-center">
+                <img class="ml-[8px] w-8 flex-none" src="assets/images/logo.png" alt="">
+                <span class="hidden align-middle text-2xl font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline">
+                    SYSTEM
+                </span>
+            </a>
+
+            <a
+                href="javascript:;"
+                class="collapse-icon flex flex-none rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary ltr:ml-2 rtl:mr-2 dark:bg-dark/40 dark:text-[#d0d2d6] dark:hover:bg-dark/60 dark:hover:text-primary lg:hidden"
+                (click)="storeData.dispatch({type: 'toggleSidebar'})"
+            >
+                <icon-menu class="h-5 w-5" />
+            </a>
+
+        </div>
+
+        <div
+            class="flex items-right space-x-1.5 ltr:ml-auto rtl:mr-auto rtl:space-x-reverse dark:text-[#d0d2d6] sm:flex-1 ltr:sm:ml-0 sm:rtl:mr-0 lg:space-x-2"
+        >
+            <div class="sm:ltr:mr-auto sm:rtl:ml-auto ">
+                <a
+                    href="javascript:;"
+                    *ngIf="store.theme === 'light'"
+                    class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    (click)="storeData.dispatch({type: 'toggleTheme', payload:'dark'})"
+                >
+                    <icon-sun />
+                </a>
+                <a
+                    href="javascript:;"
+                    *ngIf="store.theme === 'dark'"
+                    class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    (click)="storeData.dispatch({type: 'toggleTheme', payload:'system'})"
+                >
+                    <icon-moon />
+                </a>
+                <a
+                    href="javascript:;"
+                    *ngIf="store.theme === 'system'"
+                    class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    (click)="storeData.dispatch({type: 'toggleTheme', payload:'light'})"
+                >
+                    <icon-laptop />
+                </a>
+            </div>
+
+            <div class="dropdown shrink-0 " >
+                <div hlMenu class="!block">
+                    <button type="button" hlMenuButton class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60">
+                    <icon-user/>
+                    </button>
+                    <ul
+                        *hlMenuItems
+                        @toggleAnimation
+                        class="top-11 w-[230px] !py-0 font-semibold text-dark ltr:right-0 rtl:left-0 dark:text-white-dark dark:text-white-light/90"
+                    >
+                        <li>
+                            <div class="flex items-center px-4 py-4">
+                                <div class="truncate ltr:pl-4 rtl:pr-4">
+                                    <h4 class="text-base">
+                                        John Doe
+                                    </h4>
+                                    <a class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white" href="javascript:;"
+                                        >johndoe@gmail.com</a
+                                    >
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="border-t border-white-light dark:border-white-light/10">
+                            <a routerLink="/auth/boxed-signin" *hlMenuItem="let menuItem" class="!py-3 text-danger">
+                                <icon-logout class="h-4.5 w-4.5 shrink-0 rotate-90 ltr:mr-2 rtl:ml-2" />
+
+                                Sair
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
