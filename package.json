@@ -31,6 +31,7 @@
         "@ngx-translate/core": "^14.0.0",
         "@ngx-translate/http-loader": "^7.0.0",
         "ang-json2excel-btn": "^2.0.2",
+        "angular": "^1.8.3",
         "angular-custom-modal": "^1.2.0",
         "angular2-text-mask": "^9.0.0",
         "apexcharts": "^3.37.3",
