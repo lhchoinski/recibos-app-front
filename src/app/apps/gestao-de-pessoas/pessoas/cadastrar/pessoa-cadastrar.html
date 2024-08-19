@@ -1,6 +1,15 @@
 <div>
-    <!-- <Breadcrumbs :items='breadcrumbItems' /> -->
 
+    <ol class="flex text-gray-500 font-semibold dark:text-white-dark">
+        <li><a href="javascript:;" class="hover:text-gray-500/70 dark:hover:text-white-dark/70">Home</a></li>
+        <li class="before:w-1 before:h-1 before:rounded-full before:bg-primary before:inline-block before:relative before:-top-0.5 before:mx-4">
+          <a href="javascript:;" [routerLink]="'/gestao-de-pessoas/pessoas'" class="hover:text-gray-500/70 dark:hover:text-white-dark/70">Pessoas</a>
+        </li>
+        <li class="before:w-1 before:h-1 before:rounded-full before:bg-primary before:inline-block before:relative before:-top-0.5 before:mx-4">
+          <a href="javascript:;" class="text-primary" >Cadastrar</a>
+        </li>
+      </ol>
+      
     <div class='grid grid-cols-1 sm:grid-cols-2 gap-4'>
     
             <form ngNativeValidate>
