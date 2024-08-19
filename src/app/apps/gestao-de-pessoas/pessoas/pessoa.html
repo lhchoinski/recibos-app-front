@@ -1,1 +1,18 @@
-<h1>Pessoas</h1>
+<div>
+    <!-- <Breadcrumbs :items="breadcrumbItems" /> -->
+
+    <div class="panel pb-4 mt-6">
+        <div class="flex md:items-center md:flex-row flex-col mb-5 gap-5">
+          <div class="flex items-center gap-2">
+            <button [routerLink]="'/gestao-de-pessoas/pessoas/cadastrar'" class="btn btn-primary gap-2">
+              <icon-plus></icon-plus>
+              Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+
+<ng-datatable
+ [rows]="rows" 
+ [columns]="cols"> 
+</ng-datatable>

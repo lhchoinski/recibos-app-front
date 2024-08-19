@@ -69,6 +69,7 @@ import { UsuarioComponent } from './apps/administrador/usuario';
 import { RecibosHistoricoComponent } from './apps/recibos/historico/recibo';
 import { PessoaCadastrarComponent } from './apps/gestao-de-pessoas/pessoas/cadastrar/pessoa-cadastrar';
 import { UsuarioCadastrarComponent } from './apps/administrador/cadastrar/usuario-cadastrar';
+import { DataTableModule } from '@bhplugin/ng-datatable';
 
 @NgModule({
     imports: [
@@ -100,6 +101,7 @@ import { UsuarioCadastrarComponent } from './apps/administrador/cadastrar/usuari
         ModalModule,
         QuillModule.forRoot(),
         IconModule,
+        DataTableModule
     ],
     declarations: [
         AppComponent,
@@ -119,8 +121,7 @@ import { UsuarioCadastrarComponent } from './apps/administrador/cadastrar/usuari
         PessoaComponent,
         PessoaCadastrarComponent,
         UsuarioComponent,
-        UsuarioCadastrarComponent
-
+        UsuarioCadastrarComponent,
     ],
 
     providers: [
