@@ -1,24 +1,133 @@
 <div>
+    <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
 
-    <ol class="flex text-gray-500 font-semibold dark:text-white-dark">
-        <li><a href="javascript:;" class="hover:text-gray-500/70 dark:hover:text-white-dark/70">Home</a></li>
-        <li class="before:w-1 before:h-1 before:rounded-full before:bg-primary before:inline-block before:relative before:-top-0.5 before:mx-4">
-          <a href="javascript:;" [routerLink]="'/gestao-de-pessoas/pessoas'" class="hover:text-gray-500/70 dark:hover:text-white-dark/70">Pessoas</a>
-        </li>
-        <li class="before:w-1 before:h-1 before:rounded-full before:bg-primary before:inline-block before:relative before:-top-0.5 before:mx-4">
-          <a href="javascript:;" class="text-primary" >Cadastrar</a>
-        </li>
-      </ol>
-      
-    <div class='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-    
-            <form ngNativeValidate>
-                <label for="">Nome</label>
-                <input type="text" placeholder="Some Text..." class="form-input" required />
-                
-            </form>
-    
+    <div class='panel mt-6'>
+        <h2 class="mb-3 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl dark:text-white">
+            {{ ('Cadastrar Pessoa' | translate) }}
+        </h2>
+        <form [formGroup]="currentData" (ngSubmit)="saveData()" class="space-y-5">
 
+            <div class='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+
+                <div>
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" [placeholder]="'Nome Completo' | translate" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="tipo_pessoa">Tipo de Pessoa</label>
+                    <ng-select
+                        [items]="options2"
+                        [(ngModel)]="input5"
+                        [clearable]="false"
+                        [searchable]="false"
+                        id="tipo_pessoa"
+                        [placeholder]="'Selecione...' | translate"
+                        class="custom-multiselect"
+                    >
+                    </ng-select>
+                </div>
+
+                <div>
+                    <label for="nacionalidade">Nacionalidade</label>
+                    <ng-select
+                        [items]="options"
+                        [(ngModel)]="input4"
+                        [clearable]="false"
+                        [searchable]="false"
+                        id="nacionalidade"
+                        [placeholder]="'Selecione...' | translate"
+                        class="custom-multiselect"
+                    >
+                    </ng-select>
+                </div>
+
+                <div>
+                    <label for="razao_social">Razao Social</label>
+                    <input id="razao_social" type="text" [placeholder]="'Razao Social' | translate" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="cnpj">CNPJ</label>
+                    <input id="cnpj" type="text" [placeholder]="'CNPJ' | translate" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="cpf">CPF</label>
+                    <input id="cpf" type="text" [placeholder]="'CPF' | translate" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="telefone">Telefone</label>
+                    <input id="telefone" type="text" [placeholder]="'(xx) xxxxx-xxxx' | translate" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="email">E-mail</label>
+                    <input id="email" type="text" [placeholder]="'E-mail' | translate" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="endereco">Endereço</label>
+                    <input id="endereco" type="text" placeholder="Endereço" class="form-input" />
+                </div>
+                <div>
+                    <label for="numero">Numero</label>
+                    <input id="numero" type="text" placeholder="Numero" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="bairro">Bairro</label>
+                    <input id="bairro" type="text" placeholder="Bairro" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="cep">Cep</label>
+                    <input id="cep" type="text" placeholder="Cep" class="form-input" />
+                </div>
+
+                <div>
+                    <label for="pais">País</label>
+                    <ng-select
+                        [items]="options4"
+                        [(ngModel)]="input7"
+                        [clearable]="false"
+                        [searchable]="true"
+                        id="pais"
+                        [placeholder]="'Selecione...' | translate"
+                        class="custom-multiselect"
+                    >
+                    </ng-select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="md:col-span-2">
+                        <label for="cidade">Cidade</label>
+                        <input id="cidade" type="text" placeholder="Cidade" class="form-input" />
+                    </div>
+                    <div>
+                        <label for="estado">Estado</label>
+                        <ng-select
+                            [items]="options3"
+                            [(ngModel)]="input6"
+                            [clearable]="false"
+                            [searchable]="true"
+                            id="estado"
+                            [placeholder]="'Selecione...' | translate"
+                            class="custom-multiselect"
+                        >
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+
+            <div class='flex w-full justify-end'>
+                <button type='submit' class='btn btn-primary !mt-6'>
+                    <icon-save class='mr-2' />
+                    {{ ('Salvar' | translate) }}
+                </button>
+            </div>
+        </form>
     </div>
 
 </div>

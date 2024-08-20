@@ -70,6 +70,8 @@ import { RecibosHistoricoComponent } from './apps/recibos/historico/recibo';
 import { PessoaCadastrarComponent } from './apps/gestao-de-pessoas/pessoas/cadastrar/pessoa-cadastrar';
 import { UsuarioCadastrarComponent } from './apps/administrador/cadastrar/usuario-cadastrar';
 import { DataTableModule } from '@bhplugin/ng-datatable';
+import { BreadcrumbComponent } from './elements/breadcrumb/breadCrumb';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
     imports: [
@@ -85,8 +87,8 @@ import { DataTableModule } from '@bhplugin/ng-datatable';
             loader: {
                 provide: TranslateLoader,
                 useFactory: httpTranslateLoader,
-                deps: [HttpClient],
-            },
+                deps: [HttpClient]
+            }
         }),
         MenuModule,
         StoreModule.forRoot({ index: indexReducer }),
@@ -94,14 +96,15 @@ import { DataTableModule } from '@bhplugin/ng-datatable';
         NgApexchartsModule,
         NgScrollbarModule.withConfig({
             visibility: 'hover',
-            appearance: 'standard',
+            appearance: 'standard'
         }),
         HighlightModule,
         SortablejsModule,
         ModalModule,
         QuillModule.forRoot(),
         IconModule,
-        DataTableModule
+        DataTableModule,
+        NgSelectModule
     ],
     declarations: [
         AppComponent,
@@ -113,7 +116,7 @@ import { DataTableModule } from '@bhplugin/ng-datatable';
         AuthLayout,
         KnowledgeBaseComponent,
         FaqComponent,
-        //pages
+
         RelatorioPessoaComponent,
         RelatorioReciboComponent,
         GerarReciboComponent,
@@ -122,6 +125,8 @@ import { DataTableModule } from '@bhplugin/ng-datatable';
         PessoaCadastrarComponent,
         UsuarioComponent,
         UsuarioCadastrarComponent,
+
+        BreadcrumbComponent
     ],
 
     providers: [
@@ -134,14 +139,15 @@ import { DataTableModule } from '@bhplugin/ng-datatable';
                 languages: {
                     json: () => import('highlight.js/lib/languages/json'),
                     typescript: () => import('highlight.js/lib/languages/typescript'),
-                    xml: () => import('highlight.js/lib/languages/xml'),
-                },
-            },
-        },
+                    xml: () => import('highlight.js/lib/languages/xml')
+                }
+            }
+        }
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
 
 // AOT compilation support
 export function httpTranslateLoader(http: HttpClient) {

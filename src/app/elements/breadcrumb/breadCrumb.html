@@ -1,0 +1,9 @@
+<ol class="flex items-center text-gray-500 font-semibold dark:text-white-dark">
+    <li *ngFor="let item of items; let last = last" class="flex items-center">
+        <a [href]="item.link" [ngClass]="{'text-primary': item.active}"
+           class="hover:text-gray-500/70 dark:hover:text-white-dark/70">{{ item.label }}</a>
+        <ng-container *ngIf="!last">
+            <span class="mx-2 before:w-1 before:h-1 before:rounded-full before:bg-primary before:inline-block before:relative before:-top-0.5"></span>
+        </ng-container>
+    </li>
+</ol>

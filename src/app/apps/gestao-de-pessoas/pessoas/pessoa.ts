@@ -17,13 +17,17 @@ import { colDef } from '@bhplugin/ng-datatable';
 })
 export class PessoaComponent {
 
-    
     cols: Array<colDef> = [];
     rows: Array<any> = [];
 
     constructor() {
         this.initData();
     }
+
+    breadcrumbItems = [
+        { label: 'Home', link: '/home' },
+        { label: 'Pessoas', link: '#', active: true },
+    ];
 
     initData() {
         this.cols = [
