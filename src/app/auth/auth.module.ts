@@ -10,7 +10,7 @@ import { MenuModule } from 'headlessui-angular';
 import { BoxedSigninComponent } from './boxed-signin';
 
 const routes: Routes = [
-    { path: 'auth/boxed-signin', component: BoxedSigninComponent, title: 'Login | Sistema - GTI Developer' },
+    { path: 'auth/boxed-signin', component: BoxedSigninComponent, title: 'Login | SGR - GTI Developer' },
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes), CommonModule, MenuModule, IconModule],
