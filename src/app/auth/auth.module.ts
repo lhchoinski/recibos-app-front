@@ -8,12 +8,13 @@ import { IconModule } from 'src/app/shared/icon/icon.module';
 // headlessui
 import { MenuModule } from 'headlessui-angular';
 import { BoxedSigninComponent } from './boxed-signin';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
     { path: 'auth/boxed-signin', component: BoxedSigninComponent, title: 'Login | SGR - GTI Developer' },
 ];
 @NgModule({
-    imports: [RouterModule.forChild(routes), CommonModule, MenuModule, IconModule],
+    imports: [RouterModule.forChild(routes), CommonModule, MenuModule, IconModule, TranslateModule],
     declarations: [
         BoxedSigninComponent,
     ],

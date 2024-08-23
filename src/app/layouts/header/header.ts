@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { AppService } from '../../service/app.service';
 
 @Component({
     moduleId: module.id,
@@ -11,10 +12,13 @@ import { TranslateService } from '@ngx-translate/core';
     templateUrl: './header.html',
     animations: [
         trigger('toggleAnimation', [
-            transition(':enter', [style({ opacity: 0, transform: 'scale(0.95)' }), animate('100ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))]),
-            transition(':leave', [animate('75ms', style({ opacity: 0, transform: 'scale(0.95)' }))]),
-        ]),
-    ],
+            transition(':enter', [style({
+                opacity: 0,
+                transform: 'scale(0.95)'
+            }), animate('100ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))]),
+            transition(':leave', [animate('75ms', style({ opacity: 0, transform: 'scale(0.95)' }))])
+        ])
+    ]
 })
 export class HeaderComponent {
     store: any;
@@ -24,20 +28,20 @@ export class HeaderComponent {
             id: 1,
             profile: 'user-profile.jpeg',
             message: '<strong class="text-sm mr-1">John Doe</strong>invite you to <strong>Prototyping</strong>',
-            time: '45 min ago',
+            time: '45 min ago'
         },
         {
             id: 2,
             profile: 'profile-34.jpeg',
             message: '<strong class="text-sm mr-1">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
-            time: '9h Ago',
+            time: '9h Ago'
         },
         {
             id: 3,
             profile: 'profile-16.jpeg',
             message: '<strong class="text-sm mr-1">Anna Morgan</strong>Upload a file',
-            time: '9h Ago',
-        },
+            time: '9h Ago'
+        }
     ];
     messages = [
         {
@@ -47,7 +51,7 @@ export class HeaderComponent {
             ),
             title: 'Congratulations!',
             message: 'Your OS has been updated.',
-            time: '1hr',
+            time: '1hr'
         },
         {
             id: 2,
@@ -56,7 +60,7 @@ export class HeaderComponent {
             ),
             title: 'Did you know?',
             message: 'You can switch between artboards.',
-            time: '2hr',
+            time: '2hr'
         },
         {
             id: 3,
@@ -65,7 +69,7 @@ export class HeaderComponent {
             ),
             title: 'Something went wrong!',
             message: 'Send Reposrt',
-            time: '2days',
+            time: '2days'
         },
         {
             id: 4,
@@ -74,18 +78,20 @@ export class HeaderComponent {
             ),
             title: 'Warning',
             message: 'Your password strength is low.',
-            time: '5days',
-        },
+            time: '5days'
+        }
     ];
 
     constructor(
         public translate: TranslateService,
         public storeData: Store<any>,
         public router: Router,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private appSetting: AppService,
     ) {
         this.initStore();
     }
+
     async initStore() {
         this.storeData
             .select((d) => d.index)
@@ -94,5 +100,15 @@ export class HeaderComponent {
             });
     }
 
+    changeLanguage(item: any) {
+        this.translate.use(item.code);
+        this.appSetting.toggleLanguage(item);
+        if (this.store.locale?.toLowerCase() === 'ae') {
+            this.storeData.dispatch({ type: 'toggleRTL', payload: 'rtl' });
+        } else {
+            this.storeData.dispatch({ type: 'toggleRTL', payload: 'ltr' });
+        }
+        window.location.reload();
+    }
 
 }

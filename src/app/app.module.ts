@@ -72,10 +72,13 @@ import { UsuarioCadastrarComponent } from './apps/administrador/cadastrar/usuari
 import { DataTableModule } from '@bhplugin/ng-datatable';
 import { BreadcrumbComponent } from './elements/breadcrumb/breadCrumb';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SelectStatusComponent } from './components/select/select-status/select-status';
+import { heroUsers } from '@ng-icons/heroicons/outline';
 
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+        BrowserModule,
         BrowserModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -126,7 +129,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
         UsuarioComponent,
         UsuarioCadastrarComponent,
 
+        SelectStatusComponent,
+
         BreadcrumbComponent
+
+
     ],
 
     providers: [

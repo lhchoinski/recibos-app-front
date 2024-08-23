@@ -23,7 +23,7 @@ export const routes: Routes = [
         component: AppLayout,
         children: [
 
-            { path: 'home', component: HomeComponent, title: 'Home | SGR - GTI Developer' },
+            { path: 'home', component: HomeComponent, title: 'Home | SGR - GTI Gamification & App Developer' },
             { path: 'recibos/gerar-recibo', component: GerarReciboComponent, title: 'Recibos | Gerar Recibos' },
             { path: 'recibos/historico', component: RecibosHistoricoComponent, title: 'Recibos | Histórico' },
             { path: 'gestao-de-pessoas/pessoas', component: PessoaComponent, title: 'Gestão De Pessoas | Pessoas' },

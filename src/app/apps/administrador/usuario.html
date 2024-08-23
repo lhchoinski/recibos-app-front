@@ -1,1 +1,98 @@
-<div>Usuarios</div>
+<div>
+    <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
+
+    <div class="panel pb-4 mt-6">
+        <h2 class="mb-3 text-3xl font-medium leading-none tracking-tight text-gray-600 md:text-3xl dark:text-white">
+            {{ 'Users' | translate }}
+        </h2>
+        <div class="flex md:items-center md:flex-row flex-col mb-5 gap-5">
+            <div class="flex items-center gap-2">
+                <button [routerLink]="'/gestao-de-pessoas/pessoas/cadastrar'" class="btn btn-primary gap-2">
+                    <icon-plus></icon-plus>
+                    {{ 'To Add' | translate }}
+                </button>
+            </div>
+            <div class="ltr:ml-auto rtl:mr-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <select-status></select-status>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="{{ 'Search' | translate }}"
+                            class="form-input"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="datatable">
+            <ng-datatable
+                [rows]="rows"
+                [columns]="cols"
+            >
+
+                <ng-template slot="status" let-value="data">
+                    <span *ngIf="value.status" class="badge bg-primary">{{ 'Enable' | translate }}</span>
+                    <span *ngIf="!value.status" class="badge bg-danger">{{ 'Disable' | translate }}</span>
+                </ng-template>
+
+                <ng-template slot="role" let-value="data">
+                    <span class="badge p-1 rounded bg-gray-200 text-gray-800 shadow-md dark:bg-gray-800 dark:text-gray-200 dark:shadow-lg">
+                        {{ value.role | translate }}
+                    </span>
+                </ng-template>
+
+                <ng-template slot="actions" let-value="data">
+                    <div class="dropdown w-max">
+                        <div hlMenu>
+                            <a hlMenuButton href="javascript:;" class="align-middle">
+                                <svg class="m-auto h-5 w-5 opacity-70" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5"></circle>
+                                    <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
+                                            stroke-width="1.5"></circle>
+                                    <circle cx="19" cy="12" r="2" stroke="currentColor" stroke-width="1.5"></circle>
+                                </svg>
+                            </a>
+                            <ul *hlMenuItems @toggleAnimation class="ltr:right-0 rtl:left-0">
+                                <li>
+                                    <a [routerLink]="'/gestao-de-pessoas/pessoas/visualizar' + value.id">
+                                        <icon-pencil-paper class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
+                                        {{ 'Edit' | translate }}
+                                    </a>
+                                </li>
+                                <li *ngIf="value.status; else enable">
+                                    <button (click)="showAlertDisable()" class="flex items-center">
+                                        <span class="material-symbols-outlined mr-1">
+                                            toggle_off
+                                        </span>
+                                        {{ 'button.Disable' | translate }}
+                                    </button>
+                                </li>
+                                <ng-template #enable>
+                                    <li>
+                                        <button (click)="showAlertEnable()" class="flex items-center">
+                                        <span class="material-symbols-outlined mr-1">
+                                            toggle_on
+                                        </span>
+                                            {{ 'button.Enable' | translate }}
+                                        </button>
+                                    </li>
+                                </ng-template>
+
+                                <li *ngIf="value.status === false">
+                                    <button (click)="showAlertDelete()" class="flex items-center">
+                                        <icon-trash-lines class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0"></icon-trash-lines>
+                                        {{ 'Delete' | translate }}
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </ng-datatable>
+        </div>
+    </div>
+</div>
